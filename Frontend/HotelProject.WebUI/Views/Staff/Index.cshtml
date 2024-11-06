@@ -19,11 +19,11 @@
             <th>@item.StaffId</th>
             <th>@item.Name</th>
             <th>@item.Title</th>
-            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
-            <td><a href="#" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+            <td><a href="/Staff/DeleteStaff/@item.StaffId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a href="/Staff/UpdateStaff/@item.StaffId" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
             <td><a href="#" class="btn mb-1 btn-rounded btn-outline-dark">Detaylar</a></td>
         </tr>
     }
 </table>
-<a href="/Staff/AddStaff/" class="btn mb-1 btn-rounded btn-outline-success">Yeni Personel Girişi</a>
+<a href="/Staff/AddStaff" class="btn mb-1 btn-rounded btn-outline-success">Yeni Personel Girişi</a>
 
