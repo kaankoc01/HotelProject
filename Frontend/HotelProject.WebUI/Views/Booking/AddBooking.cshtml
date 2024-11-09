@@ -30,7 +30,7 @@
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" asp-for="Name" placeholder="Adınız Soyadınız ">
-                                    <label for="name">Adınzı Soyadınız</label>
+                                    <label for="name">Adınız Soyadınız</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -41,14 +41,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" asp-for ="Chechkin" placeholder="Giriş Tarihi" data-target="#date3" data-toggle="datetimepicker" />
-                                    <label for="checkin">Giriş Tarihi</label>
+                                    <input type="text" class="form-control datetimepicker-input" asp-for ="Chechkin" id ="chechkin" placeholder="Giriş Tarihi" data-target="#date3" data-toggle="datetimepicker" />
+                                    <label for="chechkin">Giriş Tarihi</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating date" id="date4" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" asp-for="ChechkOut" placeholder="Çıkış Tarihi" data-target="#date4" data-toggle="datetimepicker" />
-                                    <label for="checkout">Çıkış Tarihi</label>
+                                    <input type="text" class="form-control datetimepicker-input" asp-for="ChechkOut" id="chechkout" placeholder="Çıkış Tarihi" data-target="#date4" data-toggle="datetimepicker" />
+                                    <label for="chechkout">Çıkış Tarihi</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Özel İstekler" asp-for="SpecialRequest" style="height: 100px"></textarea>
+                                    <textarea class="form-control" placeholder="Özel İstekler" asp-for="SpecialRequest"  id ="message" style="height: 100px"></textarea>
                                     <label for="message">Özel İstekler</label>
                                 </div>
                             </div>

@@ -28,6 +28,7 @@ namespace HotelProject.WebUI.Controllers
         public async Task<IActionResult> AddBooking(CreateBookingDto createBookingDto)
         {
             createBookingDto.Status = "Onay Bekliyor";
+            createBookingDto.Description = "sasd";
 
 
             var client = _httpClientFactory.CreateClient();
