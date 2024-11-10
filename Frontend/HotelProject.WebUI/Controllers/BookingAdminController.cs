@@ -29,6 +29,8 @@ namespace HotelProject.WebUI.Controllers
         }
         public async Task<IActionResult> ApprovedReservation(ApprovedReservationDto approvedReservationDto)
         {
+
+            // entitye özgü metotun 
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(approvedReservationDto);
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
