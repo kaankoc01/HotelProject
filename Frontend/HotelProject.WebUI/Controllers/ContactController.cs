@@ -30,7 +30,6 @@ namespace HotelProject.WebUI.Controllers
         {
             createContactDto.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
 
-
             var client = _httpClientFactory.CreateClient();
 
             var jsonData = JsonConvert.SerializeObject(createContactDto);
