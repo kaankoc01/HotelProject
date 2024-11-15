@@ -36,6 +36,25 @@ namespace HotelProject.WebUI.Controllers
          
             return View();
         }
+
+
+        public async Task<IActionResult> Sendbox()
+        {
+
+            var client = _httpClientFactory.CreateClient();
+
+            // API'den personel listesini getirmek için GET isteği gönderiliyor.
+            var responseMessage = await client.GetAsync("http://localhost:5272/api/SendMessage");
+
+            // Eğer istek başarılıysa (200 OK), veriler JSON formatında okunup deserialize ediliyor.
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultSendboxDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
         [HttpGet]
        
         public IActionResult AddSendMessage()
@@ -75,6 +94,12 @@ namespace HotelProject.WebUI.Controllers
         public PartialViewResult SideBarAdminContactCategoryPartial()
         {
             return PartialView();
+        }
+
+        public IActionResult MessageDetails(int id)
+        {
+            id = 0;
+            return View();
         }
     }
 }
