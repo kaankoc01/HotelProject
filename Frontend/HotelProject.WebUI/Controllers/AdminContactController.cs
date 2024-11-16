@@ -96,9 +96,43 @@ namespace HotelProject.WebUI.Controllers
             return PartialView();
         }
 
-        public IActionResult MessageDetails(int id)
+        public async Task<IActionResult> MessageDetailsBySendbox(int id)
         {
-            id = 0;
+
+            var client = _httpClientFactory.CreateClient();
+
+            // Güncellenecek personel verisini API'den almak için GET isteği gönderiliyor.
+            var responseMessage = await client.GetAsync($"http://localhost:5272/api/SendMessage/{id}");
+
+            // Eğer istek başarılıysa JSON verisi deserialize edilip modele atanıyor.
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<GetMessageByIdDto>(jsonData);
+                return View(values); // Güncelleme formuna model gönderiliyor.
+            }
+
+            // Başarısız bir istek durumunda boş bir view döndürülüyor.
+            return View();
+        }
+
+        public async Task<IActionResult> MessageDetailsByInbox(int id)
+        {
+
+            var client = _httpClientFactory.CreateClient();
+
+            // Güncellenecek personel verisini API'den almak için GET isteği gönderiliyor.
+            var responseMessage = await client.GetAsync($"http://localhost:5272/api/Contact/{id}");
+
+            // Eğer istek başarılıysa JSON verisi deserialize edilip modele atanıyor.
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<InboxContactDto>(jsonData);
+                return View(values); // Güncelleme formuna model gönderiliyor.
+            }
+
+            // Başarısız bir istek durumunda boş bir view döndürülüyor.
             return View();
         }
     }
