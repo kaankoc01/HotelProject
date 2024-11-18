@@ -21,19 +21,28 @@ namespace HotelProject.WebUI.Controllers
         {
             
             var client = _httpClientFactory.CreateClient();
-
-            // API'den personel listesini getirmek için GET isteği gönderiliyor.
             var responseMessage = await client.GetAsync("http://localhost:5272/api/Contact");
+
+
+            var client2 = _httpClientFactory.CreateClient();
+            var responseMessage2 = await client2.GetAsync("http://localhost:5272/api/Contact/GetContactCount");
+
+            var client3 = _httpClientFactory.CreateClient();
+            var responseMessage3 = await client3.GetAsync("http://localhost:5272/api/SendMessage/GetSendMessageCount");
+
 
             // Eğer istek başarılıysa (200 OK), veriler JSON formatında okunup deserialize ediliyor.
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<InboxContactDto>>(jsonData);
+                var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+                ViewBag.contactCount = jsonData2;
+                var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
+                ViewBag.SendMessageCount = jsonData3;
                 return View(values); 
             }
 
-         
             return View();
         }
 
@@ -138,25 +147,25 @@ namespace HotelProject.WebUI.Controllers
 
 
 
-        public async Task<IActionResult> GetContactCount()
-        {
+        //public async Task<IActionResult> GetContactCount()
+        //{
 
-            var client = _httpClientFactory.CreateClient();
+            //var client = _httpClientFactory.CreateClient();
 
-            // API'den personel listesini getirmek için GET isteği gönderiliyor.
-            var responseMessage = await client.GetAsync("http://localhost:5272/api/Contact/GetContactCount");
+            //// API'den personel listesini getirmek için GET isteği gönderiliyor.
+            //var responseMessage = await client.GetAsync("http://localhost:5272/api/Contact/GetContactCount");
 
-            // Eğer istek başarılıysa (200 OK), veriler JSON formatında okunup deserialize ediliyor.
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                // var values = JsonConvert.DeserializeObject<List<InboxContactDto>>(jsonData);
-                ViewBag.Data = jsonData;
-                return View();
-            }
+            //// Eğer istek başarılıysa (200 OK), veriler JSON formatında okunup deserialize ediliyor.
+            //if (responseMessage.IsSuccessStatusCode)
+            //{
+            //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            //    // var values = JsonConvert.DeserializeObject<List<InboxContactDto>>(jsonData);
+            //    ViewBag.Data = jsonData;
+            //    return View();
+            //}
 
 
-            return View();
-        }
+            //return View();
+        //}
     }
 }
