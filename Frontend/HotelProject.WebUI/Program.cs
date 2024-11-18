@@ -23,6 +23,8 @@ builder.Services.AddTransient<IValidator<UpdateGuestDto>, UpdateGuestValidator>(
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
+
+
 builder.Services.AddMvc(config =>
 {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -50,8 +52,9 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 }
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404","?code={0}");
+app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();

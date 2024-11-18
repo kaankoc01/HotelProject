@@ -135,5 +135,28 @@ namespace HotelProject.WebUI.Controllers
             // Başarısız bir istek durumunda boş bir view döndürülüyor.
             return View();
         }
+
+
+
+        public async Task<IActionResult> GetContactCount()
+        {
+
+            var client = _httpClientFactory.CreateClient();
+
+            // API'den personel listesini getirmek için GET isteği gönderiliyor.
+            var responseMessage = await client.GetAsync("http://localhost:5272/api/Contact/GetContactCount");
+
+            // Eğer istek başarılıysa (200 OK), veriler JSON formatında okunup deserialize ediliyor.
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                // var values = JsonConvert.DeserializeObject<List<InboxContactDto>>(jsonData);
+                ViewBag.Data = jsonData;
+                return View();
+            }
+
+
+            return View();
+        }
     }
 }
