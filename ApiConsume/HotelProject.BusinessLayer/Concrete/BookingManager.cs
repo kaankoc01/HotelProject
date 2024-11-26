@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace HotelProject.BusinessLayer.Concrete
 {
     public class BookingManager : IBookingService
+
     {
         private readonly IBookingDal _bookingDal;
 
@@ -26,6 +27,21 @@ namespace HotelProject.BusinessLayer.Concrete
         public void TBookingStatusChangeApproved2(int id)
         {
             _bookingDal.BookingStatusChangeApproved2(id);
+        }
+
+        public void TBookingStatusChangeApproved3(int id)
+        {
+            _bookingDal.BookingStatusChangeApproved3(id);
+        }
+
+        public void TBookingStatusChangeCancel(int id)
+        {
+            _bookingDal.BookingStatusChangeCancel(id);
+        }
+
+        public void TBookingStatusChangeWait(int id)
+        {
+            _bookingDal.BookingStatusChangeWait(id);
         }
 
         public void TDelete(Booking t)

@@ -46,26 +46,33 @@ namespace HotelProject.WebApi.Controllers
             var values = _bookingService.TGetById(id);
             return Ok(values);
         }
-        // entity özgü metot , 
-        [HttpPut("aaaaaaa")]
-        public IActionResult aaaaaaa(Booking booking)
-        {
-            _bookingService.TBookingStatusChangeApproved(booking);
-            return Ok();
-        }
-
-        [HttpPut("bbbbbbb")]
-        public IActionResult bbbbbbb(int id)
-        {
-            _bookingService.TBookingStatusChangeApproved2(id);
-            return Ok();
-        }
 
         [HttpGet("Last6Booking")]
         public IActionResult Last6Booking()
         {
             var values = _bookingService.TLast6Booking();
             return Ok(values);
+        }
+
+        [HttpGet("BookingAproved")]
+        public IActionResult BookingAproved(int id)
+        {
+            _bookingService.TBookingStatusChangeApproved3(id);
+            return Ok();
+        }
+
+        [HttpGet("BookingCancel")]
+        public IActionResult BookingCancel(int id)
+        {
+            _bookingService.TBookingStatusChangeCancel(id);
+            return Ok();
+        }
+
+        [HttpGet("BookingWait")]
+        public IActionResult BookingWait(int id)
+        {
+            _bookingService.TBookingStatusChangeWait(id);
+            return Ok();
         }
     }
 }

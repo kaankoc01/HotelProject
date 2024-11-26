@@ -32,12 +32,11 @@
                     <td>@(((DateTime)item.Chechkin).ToString("dd-MMM-yyyy")) </td>
                     <td>@(((DateTime)item.ChechkOut).ToString("dd-MMM-yyyy")) </td>
                     <td><span class="badge badge-primary px-2">@item.Status</span></td>
-                    <td><a href="/BookingAdmin/ApprovedReservation/@item.BookingId" class="btn btn-outline-primary">Onayla</a></td>
-                    <td><a href="#" class="btn btn-outline-danger">İptal Et </a></td>
-                    <td><a href="#" class="btn btn-outline-warning">Beklet </a></td>
-                    <td><a href="#" class="btn btn-outline-info">Güncelle </a></td>
-                    <td><a href="#" class="btn btn-outline-dark">Detaylar </a></td>
-
+                    <td><a href="/BookingAdmin/ApprovedReservation2/@item.BookingId" class="btn btn-outline-primary">Onayla</a></td>
+                    <td><a href="/BookingAdmin/CancelReservation/@item.BookingId" class="btn btn-outline-danger">İptal Et </a></td>
+                    <td><a href="/BookingAdmin/WaitReservation/@item.BookingId" class="btn btn-outline-warning">Beklet </a></td>
+                    <td><a href="/BookingAdmin/UpdateBooking/@item.BookingId" class="btn btn-outline-info">Güncelle </a></td>
+                    <td><a href="/BookingAdmin/UpdateBooking/@item.BookingId" class="btn btn-outline-dark">Detaylar </a></td>
 
                 </tr>
             }
