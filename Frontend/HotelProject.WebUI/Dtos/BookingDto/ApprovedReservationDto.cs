@@ -4,5 +4,6 @@
     {
         public int BookingId { get; set; }
         public string Status { get; set; }
+        // github push. 
     }
 }
